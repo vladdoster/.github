@@ -1,7 +1,7 @@
 {
-  "repositoryUrl": "https://github.com/vladdoster/.github",
   "branches": [
-    "main"
+    "main",
+    "master"
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
