@@ -8,7 +8,6 @@ on:
 
 jobs:
   repository-statistics-matrix:
-    name: Get repository list
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,7 +15,7 @@ jobs:
       fail-fast: false
       max-parallel: 1
     steps:
-      - name: Generate repository statistics
+      - name: Generate ${{ matrix.statsRepo }} statistics
         uses: jgehrcke/github-repo-stats@RELEASE
         with:
           repository: ${{ matrix.statsRepo }}
