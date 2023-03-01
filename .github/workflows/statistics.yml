@@ -1,4 +1,4 @@
-name: fetch-repository-stats
+name: Generate statistics
 concurrency: fetch-repository-stats
 
 on:
@@ -12,13 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # The repositories to generate reports for.
-        statsRepo: ['vladdoster/remember.nvim', 'vladdoster/dotfiles']
-      # Do not cancel&fail all remaining jobs upon first job failure.
+        statsRepo: ['vladdoster/remember.nvim','vladdoster/dotfiles','zdharma-continuum/zinit']
       fail-fast: false
-      # Help avoid commit conflicts. Note(JP): this should not be
-      # necessary anymore, feedback appreciated
-      max-parallel: 1
+      max-parallel: 5
     steps:
       - name: run-ghrs
         uses: jgehrcke/github-repo-stats@RELEASE
