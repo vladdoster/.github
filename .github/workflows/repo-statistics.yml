@@ -1,4 +1,4 @@
-name: fetch-repository-stats
+name: Repository statistics
 concurrency: fetch-repository-stats
 
 on:
@@ -7,20 +7,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-ghrs-with-matrix:
-    name: repostats-for-nice-projects
+  repository-statistics-matrix:
+    name: Get repository list
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # The repositories to generate reports for.
-        statsRepo: ['vladdoster/remember.nvim', 'vladdoster/dotfiles']
-      # Do not cancel&fail all remaining jobs upon first job failure.
+        statsRepo: ['vladdoster/remember.nvim','vladdoster/dotfiles','zdharma-continuum/zinit']
       fail-fast: false
-      # Help avoid commit conflicts. Note(JP): this should not be
-      # necessary anymore, feedback appreciated
       max-parallel: 1
     steps:
-      - name: run-ghrs
+      - name: Generate repository statistics
         uses: jgehrcke/github-repo-stats@RELEASE
         with:
           repository: ${{ matrix.statsRepo }}
