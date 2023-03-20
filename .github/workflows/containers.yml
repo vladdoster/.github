@@ -10,7 +10,7 @@ on:
 
       dockerhub-token:
         description: 'A token passed from the caller workflow'
-        required: true
+        required: false
 
 jobs:
   containers:
