@@ -1,4 +1,4 @@
-name: Commit
+name: Lint Commit
 
 on:
   pull_request:
@@ -13,8 +13,14 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: '0'
-      - name: Fetch commit-lint configuration
-        run: wget https://raw.githubusercontent.com/vladdoster/.github/master/.commitlintrc
+      - name: Create commit-lint configuration
+        run: |
+          cat <<EOF > .commitlintrc
+          {
+          "extends": "@commitlint/config-angular"
+          }          
+          EOF
+      # run: wget https://raw.githubusercontent.com/vladdoster/.github/master/.commitlintrc
       - uses: wagoid/commitlint-github-action@v5
         with:
           configFile: '.commitlintrc'
