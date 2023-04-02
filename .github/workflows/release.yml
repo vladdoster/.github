@@ -5,7 +5,8 @@ on:
     secrets:
       github-token:
         description: 'A token passed from the caller workflow'
-        required: true
+        required: true     
+  workflow_dispatch:
 
 jobs:
   release:
