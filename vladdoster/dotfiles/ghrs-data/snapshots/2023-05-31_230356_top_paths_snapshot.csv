@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles/tree/master/zsh,27,2
+/vladdoster/dotfiles,15,10
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,13,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zshrc,7,2
+/vladdoster/dotfiles/blob/master/zsh/.stow-local-ignore,6,1
+/vladdoster/dotfiles/blob/master/zsh/.zshenv,6,1
+/vladdoster/dotfiles/tree/master/zsh/.config,5,2
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/rc.d,5,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/00-alias.zsh,4,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/04-zinit.zsh,4,1
