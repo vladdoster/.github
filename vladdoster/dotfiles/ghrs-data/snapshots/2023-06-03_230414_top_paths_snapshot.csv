@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,24,11
+/vladdoster/dotfiles/actions,6,2
+/vladdoster/dotfiles/blob/master/git/.config/git/config,6,2
+/vladdoster/dotfiles/tree/master/git/.config/git,6,2
+/vladdoster/dotfiles/actions/workflows/release.yml,6,1
+/vladdoster/dotfiles/blob/master/.github/workflows/cleanup-runs.yml,4,1
+/vladdoster/dotfiles/blob/master/CHANGELOG.md,3,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zshrc,3,1
+/vladdoster/dotfiles/blob/master/yabai/.config/yabai/yabairc,2,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/%2Bbrew-link-keg,2,2
