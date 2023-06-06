@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,25,7
+/vladdoster/dotfiles/actions,7,2
+/vladdoster/dotfiles/blob/master/git/.config/git/config,6,2
+/vladdoster/dotfiles/tree/master/git/.config/git,6,2
+/vladdoster/dotfiles/actions/workflows/release.yml,6,1
+/vladdoster/dotfiles/blob/master/.github/workflows/cleanup-runs.yml,6,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/04-zinit.zsh,4,1
+/vladdoster/dotfiles/blob/master/CHANGELOG.md,3,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zshrc,3,1
+/vladdoster/dotfiles/releases,2,2
