@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,9,4
+/vladdoster/dotfiles/tree/master/skhd/.config/skhd,7,1
+/vladdoster/dotfiles/blob/master/skhd/.config/skhd/skhdrc,6,1
+/vladdoster/dotfiles/blob/master/kitty/.config/kitty/kitty.conf,4,2
+/vladdoster/dotfiles/blob/master/.local/bin/statusbar/cpu,3,1
+/vladdoster/dotfiles/tree/master/wezterm/.config/wezterm,3,1
+/vladdoster/dotfiles/blob/master/arch-linux.Dockerfile,2,1
+/vladdoster/dotfiles/blob/master/kitty/.config/kitty/dracula.conf,2,1
+/vladdoster/dotfiles/blob/master/wezterm/.config/wezterm/wezterm.lua,2,1
+/vladdoster/dotfiles/blob/master/yabai/.config/yabai/yabairc,2,1
