@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,7,3
+/vladdoster/dotfiles/blob/master/.local/bin/statusbar/cpu,3,1
+/vladdoster/dotfiles/blob/master/.local/bin/statusbar/network_traffic,3,1
+/vladdoster/dotfiles/actions,2,1
+/vladdoster/dotfiles/actions/workflows/release.yml,2,1
+/vladdoster/dotfiles/activity,2,1
+/vladdoster/dotfiles/blob/f0fee9f9896073c33074c22a199a9fbb81462164/python/.config/pycodestyle,2,1
+/vladdoster/dotfiles/blob/f0fee9f9896073c33074c22a199a9fbb81462164/zsh/.config/zsh/aliases.zsh,2,1
+/vladdoster/dotfiles/blob/f0fee9f9896073c33074c22a199a9fbb81462164/zsh/.config/zsh/zinit.zsh,2,1
+/vladdoster/dotfiles/blob/master/git/.config/git/commit-template,2,1
