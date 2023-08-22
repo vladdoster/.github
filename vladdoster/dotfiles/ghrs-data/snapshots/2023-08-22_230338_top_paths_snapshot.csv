@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,8,3
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,6,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/c,4,1
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/functions,4,1
+/vladdoster/dotfiles/blob/master/.local/bin/statusbar/network_traffic,3,1
+/vladdoster/dotfiles/actions,2,1
+/vladdoster/dotfiles/actions/workflows/release.yml,2,1
+/vladdoster/dotfiles/activity,2,1
+/vladdoster/dotfiles/blob/f0fee9f9896073c33074c22a199a9fbb81462164/python/.config/pycodestyle,2,1
+/vladdoster/dotfiles/blob/f0fee9f9896073c33074c22a199a9fbb81462164/zsh/.config/zsh/aliases.zsh,2,1
