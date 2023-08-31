@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,20,3
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,19,2
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/functions,12,1
+/vladdoster/dotfiles/tree/master/zsh,10,2
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/rc.d,10,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/04-zinit.zsh,9,1
+/vladdoster/dotfiles/actions,6,1
+/vladdoster/dotfiles/blob/master/wezterm/.config/wezterm/wezterm.lua,6,1
+/vladdoster/dotfiles/edit/master/zsh/.config/zsh/functions/dkr,6,1
+/vladdoster/dotfiles/actions/workflows/release.yml,5,1
