@@ -11,9 +11,7 @@ on:
       dockerhub-token:
         description: 'A token passed from the caller workflow'
         required: false
-env:
-  BUILDX_NO_DEFAULT_ATTESTATIONS: 1
-  
+
 jobs:
   containers:
 
@@ -27,24 +25,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-     
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: |
-            ghcr.io/vladdoster/dotfiles
-          tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          install: true
+          use: true
 
       - name: Login to ghcr.io
         if: github.event_name != 'pull_request'
@@ -53,67 +42,33 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.github-token }}
-
+      
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ghcr.io/vladdoster/dotfiles
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+      
       - name: Build and push
-        id: build-and-push
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
-          labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ steps.meta.outputs.tags }}
-          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
-# name: Demo Push
-
-# This workflow runs when any of the following occur:
-# - A push is made to a branch called `main` or `seed`
-# - A tag starting with "v" is created
-# - A pull request is created or updated
-# on:
-#   push:
-#     branches:
-#       - main
-#       - seed
-#     tags:
-#       - v*
-#   pull_request:
-#   # This creates an environment variable called `IMAGE_NAME ` with the value `ghtoken_product_demo`.
-# env:
-#   IMAGE_NAME: ghtoken_product_demo
-# #
-# jobs:
-#   # This pushes the image to GitHub Packages.
-#   push:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       packages: write
-#       contents: read
-#       #
-#     steps:
-#       - uses: actions/checkout@v4
-
-#       - name: Build image
-#         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
-
-#       - name: Log in to registry
-#         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-#         #
-#       - name: Push image
-#         run: |
-#           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-#           # This changes all uppercase characters to lowercase.
-#           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-#           # This strips the git ref prefix from the version.
-#           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-#           # This strips the "v" prefix from the tag name.
-#           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-#           # This uses the Docker `latest` tag convention.
-#           [ "$VERSION" == "main" ] && VERSION=latest
-#           echo IMAGE_ID=$IMAGE_ID
-#           echo VERSION=$VERSION
-#           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-#           docker push $IMAGE_ID:$VERSION
-
+      # - name: Build and push
+      #   id: build-and-push
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     labels: ${{ steps.meta.outputs.labels }}
+      #     tags: ${{ steps.meta.outputs.tags }}
+      #     push: ${{ github.event_name != 'pull_request' }}
