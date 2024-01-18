@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,20,1
+/vladdoster/dotfiles/blob/master/CHANGELOG.md,17,1
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/rc.d,15,4
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,14,3
+/vladdoster/dotfiles/releases,14,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/02-completion.zsh,11,2
+/vladdoster/dotfiles/actions/workflows/release.yml,11,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/05-widget.zsh,9,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zshrc,8,3
+/vladdoster/dotfiles/actions,8,1
