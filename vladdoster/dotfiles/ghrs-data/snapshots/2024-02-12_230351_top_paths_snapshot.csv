@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,14,4
+/vladdoster/dotfiles/actions/workflows/release.yml,6,1
+/vladdoster/dotfiles/actions,4,1
+/vladdoster/dotfiles/pulls,4,1
+/vladdoster/dotfiles/releases,4,1
+/vladdoster/dotfiles/deployments,3,1
+/vladdoster/dotfiles/blob/400dfb1f4c94ff7fda1395f6a7fcac684c50907f/zsh/.config/zsh/rc.d/06-zinit.zsh,2,1
+/vladdoster/dotfiles/blob/ef06ca8cb1259e154b8f32b5c7d26742e9f75e6e/wezterm/.config/wezterm/wezterm.lua,2,1
+/vladdoster/dotfiles/blob/master/Dockerfile,2,1
+/vladdoster/dotfiles/tree/master/docker,2,1
