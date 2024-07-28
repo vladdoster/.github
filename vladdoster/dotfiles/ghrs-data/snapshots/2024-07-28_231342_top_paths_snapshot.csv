@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,19,2
+/vladdoster/dotfiles/tree/master/zsh,16,2
+/vladdoster/dotfiles,12,3
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zshrc,7,1
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/rc.d,5,2
+/vladdoster/dotfiles/actions/workflows/release.yml,5,1
+/vladdoster/dotfiles/blob/master/zsh/.zshenv,5,1
+/vladdoster/dotfiles/releases,5,1
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/completions,5,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/dkr,4,1
