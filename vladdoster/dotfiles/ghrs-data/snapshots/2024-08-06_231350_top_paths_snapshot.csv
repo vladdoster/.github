@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,10,6
+/vladdoster/dotfiles/releases,10,1
+/vladdoster/dotfiles/tree/master/git/.config/git,6,2
+/vladdoster/dotfiles/blob/master/git/.config/git/config,5,2
+/vladdoster/dotfiles/tree/master/zsh,4,2
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,4,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/%2Bbrew-link-keg,3,1
+/vladdoster/dotfiles/actions,2,1
+/vladdoster/dotfiles/actions/workflows/release.yml,2,1
+/vladdoster/dotfiles/blob/fix/zsh-files/zsh/.config/zsh/functions/%2Bbrew-link-keg,2,1
