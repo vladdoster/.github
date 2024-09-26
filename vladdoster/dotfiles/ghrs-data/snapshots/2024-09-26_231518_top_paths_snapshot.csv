@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,17,5
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/functions,13,2
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/rc.d,13,2
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,11,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/04-zinit.zsh,10,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/06-zinit.zsh,9,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/00-env.zsh,8,1
+/vladdoster/dotfiles/commits/master,8,1
+/vladdoster/dotfiles/releases,7,1
+/vladdoster/dotfiles/blob/63ecef8e6f9c6b8138f80dc90a7bb357744dbf21/zsh/.config/zsh/rc.d/06-zinit.zsh,6,1
