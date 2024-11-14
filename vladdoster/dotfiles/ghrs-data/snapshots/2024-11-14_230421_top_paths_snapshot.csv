@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,6,3
+/vladdoster/dotfiles/tree/master,4,2
+/vladdoster/dotfiles/branches,2,1
+/vladdoster/dotfiles/commits,2,1
+/vladdoster/dotfiles/tree/master/bash,2,1
+/vladdoster/dotfiles/tree/master/docker,2,1
+/vladdoster/dotfiles/blob/db8866560a9181c15e5751c7404f574a4526cd12/zsh/.config/zsh/.zprofile,1,1
+/vladdoster/dotfiles/blob/master/bash/.bashrc,1,1
+/vladdoster/dotfiles/blob/master/bin/.local/bin/installer,1,1
+/vladdoster/dotfiles/blob/master/docker/Makefile,1,1
