@@ -1,0 +1,5 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,3,3
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/04-zinit.zsh,2,1
+/vladdoster/dotfiles/blob/master/.local/bin/statusbar/cpu,1,1
+/vladdoster/dotfiles/blob/master/.local/bin/statusbar/network_traffic,1,1
