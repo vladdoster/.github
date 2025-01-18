@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,5,5
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/03-zinit.zsh,2,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/04-zinit.zsh,2,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/00-env.zsh,1,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/01-alias.zsh,1,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/02-completion.zsh,1,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/04-opt.zsh,1,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/05-widget.zsh,1,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/06-fzf.zsh,1,1
+/vladdoster/dotfiles/blob/master/.local/bin/statusbar/cpu,1,1
