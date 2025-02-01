@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,7,5
+/vladdoster/dotfiles/tree/master/zsh,4,3
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh,3,2
+/vladdoster/dotfiles/blob/fix/zsh-files/zsh/.config/zsh/functions/%2Bbrew-link-keg,3,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/%2Bbrew-link-keg,3,1
+/vladdoster/dotfiles/compare/fix/zsh-files...master,3,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/06-zinit.zsh,2,1
+/vladdoster/dotfiles/tree/master/zsh/.config/zsh/functions,2,1
+/vladdoster/dotfiles/blob/db8866560a9181c15e5751c7404f574a4526cd12/zsh/.config/zsh/functions/%2Bbrew-link-keg,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/zpgrep,1,1
