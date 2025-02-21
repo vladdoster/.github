@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/06-zinit.zsh,3,1
+/vladdoster/dotfiles/blob/master/zsh/.zshenv,2,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/log%3A%3Aerror,2,1
+/vladdoster/dotfiles,1,1
+/vladdoster/dotfiles/blob/master/Brewfile,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/log%3A%3Ainfo,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/zsh-clean,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/00-env.zsh,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/01-alias.zsh,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/03-fzf.zsh,1,1
