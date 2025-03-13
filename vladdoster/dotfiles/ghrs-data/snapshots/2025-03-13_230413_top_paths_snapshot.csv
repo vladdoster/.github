@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,5,4
+/vladdoster/dotfiles/blob/master/zsh/.zshenv,5,2
+/vladdoster/dotfiles/tree/master/zsh,3,3
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zshrc,3,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/06-zinit.zsh,2,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zprofile,2,2
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/rc.d/04-zinit.zsh,2,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/completions/_e%3Afind-replace,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/zpgrep,1,1
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/functions/zsh%3A%3Aload-completion,1,1
