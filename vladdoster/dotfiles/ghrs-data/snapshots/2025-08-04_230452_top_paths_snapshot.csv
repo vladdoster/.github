@@ -1,0 +1,9 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,3,3
+/vladdoster/dotfiles/actions/workflows/release.yml,3,1
+/vladdoster/dotfiles/actions/runs/11311871483,1,1
+/vladdoster/dotfiles/actions/runs/11311871483/job/31458602114,1,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/03-zinit.zsh,1,1
+/vladdoster/dotfiles/commit/ef5e59856feb122ef90d9c8d5456dba92b15a391,1,1
+/vladdoster/dotfiles/labels/released,1,1
+/vladdoster/dotfiles/labels/wontfix,1,1
