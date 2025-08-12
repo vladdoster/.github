@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,24,5
+/vladdoster/dotfiles/actions,15,2
+/vladdoster/dotfiles/releases,10,1
+/vladdoster/dotfiles/actions/workflows/release.yml,9,2
+/vladdoster/dotfiles/actions/runs/16870511909/job/47784464708,7,1
+/vladdoster/dotfiles/actions/runs/16870511909,6,1
+/vladdoster/dotfiles/blob/master/Dockerfile,5,1
+/vladdoster/dotfiles/tree/master,5,1
+/vladdoster/dotfiles/blob/master/Brewfile,3,2
+/vladdoster/dotfiles/compare/master...fix/zsh-files,3,1
