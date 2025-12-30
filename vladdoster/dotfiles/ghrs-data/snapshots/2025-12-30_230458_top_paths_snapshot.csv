@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,10,3
+/vladdoster/dotfiles/blob/master/zsh/.config/zsh/.zprofile,6,1
+/vladdoster/dotfiles/pull/49,5,1
+/vladdoster/dotfiles/pulls,5,1
+/vladdoster/dotfiles/pull/49/changes,4,1
+/vladdoster/dotfiles/pull/50/changes,3,1
+/vladdoster/dotfiles/blob/1468367edf84e140e15a28e0a8ba0d3dacd7762c/zsh/.config/zsh/functions/functions::format,2,1
+/vladdoster/dotfiles/blob/1bdabcc0c747db38e03df087f3d9249f1d0091b9/zsh/.config/zsh/functions/functions::format,2,1
+/vladdoster/dotfiles/pull/50,2,1
+/vladdoster/dotfiles/blob/35d0cfad84f96843b5da38ec515e45f54486a2a4/zsh/.config/zsh/rc.d/06-zinit.zsh,1,1
