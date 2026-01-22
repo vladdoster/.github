@@ -25,7 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "colors=$(gh repo list --jq '.[].nameWithOwner | @sh' --json nameWithOwner | xargs -I{} '[{}]')" >> "$GITHUB_OUTPUT"
+          echo "colors=$(gh repo list --json nameWithOwner --template '[{{range .}} "{{.nameWithOwner}}",{{end}}]')" >> "$GITHUB_OUTPUT"
 
   delete-stale-workflow-runs:
     runs-on: ubuntu-latest
