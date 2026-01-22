@@ -11,6 +11,7 @@ on:
         required: true
   workflow_dispatch:
 
+permissions: read-all
  
 jobs:
   define-matrix:
@@ -25,8 +26,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "colors=$(gh repo list --json nameWithOwner --template '[{{range .}} "{{.nameWithOwner}}",{{end}}]')" >> "$GITHUB_OUTPUT"
-
+          colors="$(gh repo list --json nameWithOwner --template '[{{range .}} "{{.nameWithOwner}}",{{end}}]')"
+          echo $colors
+          echo "colors=$colors" >> "$GITHUB_OUTPUT"
   delete-stale-workflow-runs:
     runs-on: ubuntu-latest
     needs: define-matrix
@@ -39,7 +41,7 @@ jobs:
         env:
           color: ${{ matrix.color }}
         run: |
-          echo "$color" > color
+          echo "$color"
       - name: Delete old workflow runs
         uses: Mattraks/delete-workflow-runs@v2
         with:
