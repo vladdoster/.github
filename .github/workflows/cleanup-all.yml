@@ -25,7 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          colors="$(gh repo list --json nameWithOwner --template '[{{range .}} "{{.nameWithOwner}}",{{end}}]' --limit 100 --source vladdoster)"
+          colors="$(gh repo list --json nameWithOwner --template '[{{range .}} "{{.nameWithOwner}}",{{end}}]' --limit 100 vladdoster)"
           echo $colors
           echo "colors=$colors" >> "$GITHUB_OUTPUT"
   delete-stale-workflow-runs:
