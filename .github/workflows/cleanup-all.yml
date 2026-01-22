@@ -29,6 +29,7 @@ jobs:
           echo $colors
           echo "colors=$colors" >> "$GITHUB_OUTPUT"
   delete-stale-workflow-runs:
+    name: ""
     runs-on: ubuntu-latest
     needs: define-matrix
     permissions: write-all
