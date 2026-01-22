@@ -1,0 +1,43 @@
+name: Delete all old workflow runs
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_call:
+    secrets:
+
+      github-token:
+        description: 'A token passed from the caller workflow'
+        required: true
+  workflow_dispatch:
+
+   outputs:
+      colors: ${{ steps.colors.outputs.colors }}
+
+    steps:
+      - name: Define Colors
+        id: colors
+        run: |
+          echo "colors=$(gh repo list --jq '[.[].nameWithOwner]' --json nameWithOwner | xargs)" >> "$GITHUB_OUTPUT"
+
+  delete-stale-runs:
+    runs-on: ubuntu-latest
+    needs: define-matrix
+    strategy:
+      matrix:
+        color: ${{ fromJSON(needs.define-matrix.outputs.colors) }}
+
+    steps:
+      - name: Define Color
+        env:
+          color: ${{ matrix.color }}
+        run: |
+          echo "$color"
+
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ matrix.color }}
+          retain_days: 3
+          keep_minimum_runs: 5
