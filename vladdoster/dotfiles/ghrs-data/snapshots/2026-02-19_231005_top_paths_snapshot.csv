@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,4,4
+/vladdoster/dotfiles/pulls,4,2
+/vladdoster/dotfiles/actions,2,1
+/vladdoster/dotfiles/actions/runs/22086798406,2,1
+/vladdoster/dotfiles/actions/runs/22086798406/job/63823188789,2,1
+/vladdoster/dotfiles/pull/49,2,1
+/vladdoster/dotfiles/pull/49/changes,2,1
+/vladdoster/dotfiles/pull/49/checks,2,1
+/vladdoster/dotfiles/blob/master/arch-linux.Dockerfile,1,1
+/vladdoster/dotfiles/compare/master...refs/heads/copilot/create-zsh-function-output-modification,1,1
