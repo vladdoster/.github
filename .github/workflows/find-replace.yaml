@@ -1,0 +1,59 @@
+name: Find & Replace
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: "Repository slug (user/repo)"
+        required: true
+        type: string
+      find:
+        description: "string to replace"
+        required: true
+        type: string 
+      replace:
+        description: "replacement string"
+        required: true
+        type: string
+      include:
+        description: "Path glob for selecting what files to check"
+        type: string
+        required: false
+        default: "**"
+      commit_message:
+        description: 'Git commit message'
+        type: string
+        required: true
+      branch:
+        description: 'branch to commit to'
+        type: string
+        required: true
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout ${{ github.event.inputs.repository }}
+        uses: actions/checkout@v6
+        with:
+           repository: ${{ github.event.inputs.repository }}
+
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "${{ github.event.inputs.find }}"
+          replace: "${{ github.event.inputs.replace }}"
+          regex: false
+          include: ${{ github.event.inputs.include }}
+
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: ${{ github.event.inputs.commit_message }}
+          branch: ${{ github.event.inputs.branch }}
+          commit_options: '--no-verify --signoff'
+          commit_user_name: vladdoster
+          commit_user_email: mvdoster@gmail.com
+          commit_author: Vladislav <mvdoster@gmail.com>
+          create_branch: true
