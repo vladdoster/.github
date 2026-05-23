@@ -1,0 +1,169 @@
+name: Spell Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: "Repository slug (user/repo)"
+        required: true
+        type: string
+      find:
+        description: "Space seperated list of words to ignore"
+        required: false
+        type: string 
+      replace:
+        description: "comma-separated list of files to skip."
+        required: false
+        type: string
+      commit_message:
+        description: 'Whether to delete fork'
+        type: boolean
+        required: true
+        default: false
+      branch:
+        description: 'Whether to delete fork'
+        type: string
+        required: true
+        default: false
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ secrets.GH_PAT }}
+    steps:
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        
+      - name: Clone repository
+        id: repo
+        run: |
+          echo "::group::clean input"
+          trimmed=$(echo "${{ github.event.inputs.repository }}" | sed 's:/*$::')
+          repo="$(gh repo view --json nameWithOwner --jq '.nameWithOwner' ${trimmed})"
+          repoName="$(gh repo view --json name --jq '.name' ${trimmed})"
+          repoUrl="$(gh repo view --json url --jq '.url' ${trimmed})"
+          repoFork="${{github.repository_owner}}/${repoName}"
+          repoForkUrl="https://github.com/${repoFork}.git"
+          echo "repo=${repo}" >> "$GITHUB_OUTPUT"
+          echo "repoName=${repoName}" >> "$GITHUB_OUTPUT"
+          echo "repoUrl=${repoUrl}" >> "$GITHUB_OUTPUT"
+          echo "repoFork=${repoFork}" >> "$GITHUB_OUTPUT"
+          echo "repoForkUrl=${repoForkUrl}" >> "$GITHUB_OUTPUT"
+          printf '### [%s](%s)\n' "${repo}" "${repoUrl}" >> "${GITHUB_STEP_SUMMARY}"
+          gh repo view  --json nameWithOwner --jq '.nameWithOwner' ${trimmed} 
+          echo "::endgroup::"
+    
+      - name: Checkout ${{ steps.repo.outputs.repo }}
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GH_PAT }}  
+          repository: ${{ steps.repo.outputs.repo }}
+          path: target-repo
+
+      - name: Check spelling with codespell
+        working-directory: target-repo
+        run: |
+          my_string="${{ github.event.inputs.ignore }}"
+          FILE=/tmp/ignore.txt
+          CONFIG=/tmp/codespell.cfg
+          touch ${CONFIG} "${FILE}" 
+          if [[ ! -z "$my_string" ]]; then
+            printf '%s\n' ${{ github.event.inputs.ignore }} > "$FILE"
+            if ! grep -q '[^[:space:]]' "$FILE"; then
+              echo "File '$FILE' is empty or contains only whitespace."
+            else
+              echo '- Ignored: `${{ github.event.inputs.ignore }}`' >> "${GITHUB_STEP_SUMMARY}"
+              echo "File '$FILE' contains readable content."
+            fi
+          fi
+          printf '[codespell]\nignore-words = %s\ninteractive = 2\n' "${FILE}" > "$CONFIG"
+          if [[ ! -z "${{ github.event.inputs.skip }}" ]]; then
+            printf 'skip = %s\n' "${{ github.event.inputs.skip }}" >> "$CONFIG"
+            echo '- Skipped: `${{ github.event.inputs.skip }}`' >> "${GITHUB_STEP_SUMMARY}"
+          fi
+          cat "$CONFIG"
+          find . \
+            -type f \
+            -regextype posix-egrep \
+            -regex ".*\.(mdx|md|txt)$" \
+            -exec sh -c 'yes " " | uvx codespell --config "/tmp/codespell.cfg" -w "$@"' sh {} +
+
+      - name: Run cspell on markdown files
+        id: cspell
+        env:
+          changes: false
+        working-directory: target-repo
+        run: |
+          echo "::group::Check for changes"
+          if ! git diff --exit-code --quiet; then
+            changes=true
+          fi
+          printf "found changed files to commit: %s" ${changes}
+          echo "found_issues=${changes}" >> "$GITHUB_OUTPUT"
+          echo "::endgroup::"
+          
+      - name: Setup credentials to access private repositories
+        if: steps.cspell.outputs.found_issues == 'true'
+        run: |
+          git config --global user.name "${{github.repository_owner}}"
+          git config --global user.email "$(gh api user/public_emails -q '.[0].email')"
+          git config --global url.https://${{ secrets.GH_PAT }}@github.com/.insteadOf https://github.com/
+
+      - name: Fork repository
+        if: steps.cspell.outputs.found_issues == 'true'
+        working-directory: target-repo
+        run: |
+          gh repo fork "${{ steps.repo.outputs.repo }}" --clone=false
+          git remote set-url origin "https://github.com/${{github.repository_owner}}/${{ steps.repo.outputs.repoName }}.git"
+
+      - name: Commit and push changes
+        continue-on-error: true  
+        if: steps.cspell.outputs.found_issues == 'true'
+        working-directory: target-repo
+        run: |
+          git switch --force-create docs/fix-spelling
+          git add -A
+          git commit -m "docs: correct spelling" --signoff
+          git push origin docs/fix-spelling
+          printf "### [%s](%s)" ${{ steps.repo.outputs.repoFork }} ${{ steps.repo.outputs.repoForkUrl }} >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Delete fork
+        if: ${{ github.event.inputs.delete_fork == 'true' }}
+        run: |
+          printf 'deleting %s' "${{ steps.repo.outputs.repoFork }}" 
+          gh repo delete --yes "${{ steps.repo.outputs.repoFork }}"
+          printf '> [!IMPORTANT]\n> deleted [%s](%s)' "${{ steps.repo.outputs.repoFork }}" "${{ steps.repo.outputs.repoForkUrl }}" > "${GITHUB_STEP_SUMMARY}"
+
+name: My Workflow
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+           repository: ${{ github.event.inputs.repository }}
+
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: ${{ github.event.inputs.find }}
+          replace: ${{ github.event.inputs.replace }}
+          regex: false
+          include: "**README.md"
+
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: ${{ github.event.inputs.commit_message }}
+          branch: ${{ github.event.inputs.branch }}
+          commit_options: '--no-verify --signoff'
+          commit_user_name: vladdoster
+          commit_user_email: mvdoster@gmail.com
+          commit_author: Vladislav <mvdoster@gmail.com>
+          create_branch: true
