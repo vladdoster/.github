@@ -33,13 +33,21 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      GH_TOKEN: ${{ secrets.GH_ACTIONS_TOKEN }}
     steps:
       - name: Checkout ${{ github.event.inputs.repository }}
         uses: actions/checkout@v6
         with:
            repository: ${{ github.event.inputs.repository }}
            token: ${{ secrets.GH_ACTIONS_TOKEN || secrets.GITHUB_TOKEN }}
-           persist-credentials: true
+           persist_credentials: true
+
+      - name: Setup credentials to access private repositories
+        run: |
+          git config --global user.name "${{github.repository_owner}}"
+          git config --global user.email "$(gh api user/public_emails -q '.[0].email')"
+          git config --global url.https://${{ secrets.GH_ACTIONS_TOKEN }}@github.com/.insteadOf https://github.com   
 
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v3
