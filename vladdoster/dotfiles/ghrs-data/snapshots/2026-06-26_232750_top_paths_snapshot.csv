@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,7,6
+/vladdoster/dotfiles/pulls,3,2
+/vladdoster/dotfiles/tree/master/.github,2,1
+/vladdoster/dotfiles/tree/master/bash,2,1
+/vladdoster/dotfiles/actions,1,1
+/vladdoster/dotfiles/actions/runs/27714085027,1,1
+/vladdoster/dotfiles/actions/workflows/release.yml,1,1
+/vladdoster/dotfiles/blob/master/.github/workflows/release.yml,1,1
+/vladdoster/dotfiles/blob/master/skhd/.config/skhd/skhdrc,1,1
+/vladdoster/dotfiles/blob/master/wezterm/.config/wezterm/links.lua,1,1
