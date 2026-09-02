@@ -44,7 +44,7 @@ jobs:
         with:
           token: ${{ secrets.GH_ACTIONS_TOKEN }}
           repository: ${{ matrix.color }}
-          retain_days: 3
+          retain_days: 0
           keep_minimum_runs: 5
 
       - name: Set Repo
