@@ -1,4 +1,4 @@
-name: Lint Commit
+name: Lint Commit Messages
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   commit:
+    name: commitlint
     runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7

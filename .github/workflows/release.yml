@@ -10,6 +10,7 @@ on:
 
 jobs:
   release:
+    name: semantic-release
     runs-on: ubuntu-26.04
     environment: 
       name: develop
