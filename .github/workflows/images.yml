@@ -1,0 +1,64 @@
+name: Images
+
+on:
+  push:
+    branches: [master]
+    paths: [.commitlintrc, containers/**, .github/workflows/images.yml]
+  pull_request:
+    branches: [main,master]
+    paths: [.commitlintrc, containers/**, .github/workflows/images.yml]
+  # Rebuild each week to get new tool releases.
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+# Cancel an older run. Then it cannot overwrite a newer image.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  image:
+    name: ${{ matrix.image }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: commitlint
+            test: |
+              echo 'ci: test image' | docker run -i --rm "$IMAGE"
+              if echo 'bad' | docker run -i --rm "$IMAGE"; then exit 1; fi
+              docker run --rm --entrypoint git "$IMAGE" --version
+          - image: lint
+            test: docker run --rm "$IMAGE" 'mdformat --version && shellcheck -V && shfmt -version && taplo --version'
+    env:
+      IMAGE: ghcr.io/vladdoster/${{ matrix.image }}:latest
+    steps:
+      - uses: docker/setup-buildx-action@v4
+
+      - name: Build
+        uses: docker/build-push-action@v7
+        with:
+          file: containers/${{ matrix.image }}/Dockerfile
+          load: true
+          tags: ${{ env.IMAGE }}
+
+      - name: Test
+        run: ${{ matrix.test }}
+
+      - name: Login to ghcr.io
+        if: github.ref == 'refs/heads/master'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Push the tested image. Only master publishes the tag that callers pull.
+      - name: Push
+        if: github.ref == 'refs/heads/master'
+        run: docker push "$IMAGE"
