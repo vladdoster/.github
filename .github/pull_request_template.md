@@ -1,6 +1,5 @@
 <!--- Provide a general summary of your changes -->
 
-
 ## Related issue(s)
 
 ## Usage examples
