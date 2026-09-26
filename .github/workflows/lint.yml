@@ -8,23 +8,32 @@ on:
 
 jobs:
   lint:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: '0'
-      - uses: actions/setup-python@v6
-      - name: install dependencies
-        run: |
-          brew install shellcheck shfmt zsh
-          python3 -m pip install --break-system-packages --user linkify-it-py mdformat mdformat-config mdformat-gfm mdformat-shfmt mdformat-tables mdformat-toc
+      # The image entrypoint is `zsh -o extendedglob -c`. Each args value is one quoted command.
       - name: markdown
-        run: find . -name '*.md' ! -name 'CHANGELOG.md' -type f -print0 | xargs -0 -n1 -P4 python3 -m mdformat --check --wrap 120
+        uses: docker://ghcr.io/vladdoster/lint:latest
+        with:
+          args: >-
+            "f=(./**/*.md~*/CHANGELOG.md(.ND)); (( ! $#f )) || mdformat --check --wrap 120 $f"
       - name: shell format
-        run: find . -name '*.sh' -type f -print0 | xargs -0 -n1 -P4 shfmt -bn -ci -d -i 2 -ln bash -s -sr
+        uses: docker://ghcr.io/vladdoster/lint:latest
+        with:
+          args: >-
+            "f=(./**/*.sh(.ND)); (( ! $#f )) || shfmt -bn -ci -d -i 2 -ln bash -s -sr $f"
       - name: shell logic
-        run: find . -name '*.sh' -type f -print0 | xargs -0 -n1 -P4 shellcheck
+        uses: docker://ghcr.io/vladdoster/lint:latest
+        with:
+          args: >-
+            "f=(./**/*.sh(.ND)); (( ! $#f )) || shellcheck $f"
       - name: zsh syntax
-        run: find . -name '*.zsh' -type f -print0 | xargs -0 -n1 -P4 zsh -n
+        uses: docker://ghcr.io/vladdoster/lint:latest
+        with:
+          args: >-
+            "r=0; for f (./**/*.zsh(.ND)) { zsh -n $f || r=1 }; exit $r"
       - name: zsh compile
-        run: find . -name '*.zsh' -type f -exec zsh -fc "zcompile {}" \;
+        uses: docker://ghcr.io/vladdoster/lint:latest
+        with:
+          args: >-
+            "r=0; for f (./**/*.zsh(.ND)) { zcompile /tmp/zwc $f || r=1 }; exit $r"
