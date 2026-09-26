@@ -1,4 +1,4 @@
-name: Lint
+name: Lint Code Base
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   lint:
+    name: Lint Code Base
     runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
