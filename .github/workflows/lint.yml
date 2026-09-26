@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    name: Lint Code Base
+    name: mdformat, shellcheck, shfmt, zsh
     runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
