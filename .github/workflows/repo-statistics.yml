@@ -8,7 +8,7 @@ on:
 
 jobs:
   repository-statistics:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     strategy:
       matrix:
         statsRepo: ['vladdoster/remember.nvim','vladdoster/dotfiles','zdharma-continuum/zinit']

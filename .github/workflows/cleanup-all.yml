@@ -14,7 +14,7 @@ permissions: write-all
  
 jobs:
   define-matrix:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
 
     outputs:
       colors: ${{ steps.colors.outputs.colors }}
@@ -31,7 +31,7 @@ jobs:
   
   delete-stale-workflow-runs:
     name: ""
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: define-matrix
     permissions: write-all
     strategy:
