@@ -6,7 +6,7 @@ updates:
       interval: "daily"
       timezone: "America/Chicago"
     commit-message:
-      prefix: "chore(deps)"
+      prefix: "ci(deps)"
     labels: ["github_actions", "dependencies"]
     groups:
       dependencies:
@@ -21,7 +21,7 @@ updates:
     cooldown:
       default-days: 7
     commit-message:
-      prefix: "chore(deps)"
+      prefix: "ci(deps)"
     labels: ["docker", "dependencies"]
     groups:
       dependencies:
