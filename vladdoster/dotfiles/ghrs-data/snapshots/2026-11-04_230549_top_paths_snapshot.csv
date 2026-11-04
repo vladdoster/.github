@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/vladdoster/dotfiles,9,6
+/vladdoster/dotfiles/issues,2,2
+/vladdoster/dotfiles/pull/64,2,2
+/vladdoster/dotfiles/blob/master/git/.config/git/commit-template,2,1
+/vladdoster/dotfiles/actions/workflows/release.yml,1,1
+/vladdoster/dotfiles/blob/23852314cf226e34b158d7769ee0bdf2e64d0720/zsh/.config/zsh/rc.d/03-zinit.zsh,1,1
+/vladdoster/dotfiles/blob/master/arch-linux.Dockerfile,1,1
+/vladdoster/dotfiles/blob/master/git/.config/git/config,1,1
+/vladdoster/dotfiles/blob/master/kitty/.config/kitty/kitty.conf,1,1
+/vladdoster/dotfiles/blob/master/stow/.stow-global-ignore,1,1
